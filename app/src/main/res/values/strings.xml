@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="search_hint">Search for city or location</string>
+    <string name="search_weather_desc">Search Weather</string>
+    <string name="default_city">"Search City"</string>
+    <string name="default_datetime">Time :</string>
+    <string name="weather_icon_desc">Weather Condition Icon</string>
+    <string name="default_temp">--°</string>
+    <string name="default_condition">--</string>
+    <string name="weather_details_title">Weather Details</string>
+    <string name="humidity_label">Humidity</string>
+    <string name="default_humidity">--%</string>
+    <string name="wind_speed_label">Wind Speed</string>
+    <string name="default_wind_speed">-- km/h</string>
+    <string name="pressure_label">Pressure</string>
+    <string name="default_pressure">-- hPa</string>
+    <string name="weather_info_placeholder">Weather info will appear here</string>
+    <string name="feels_like_label">Feels Like</string>
+    <string name="min_max_temp_label">Min/Max Temp</string>
+    <string name="default_min_max_temp">--°/--°</string>
+    <string name="visibility_label">Visibility</string>
+    <string name="default_visibility">-- km</string>
+    <string name="clouds_label">Cloudiness</string>
+    <string name="default_clouds">--%</string>
+    <string name="sunrise_label">Sunrise</string>
+    <string name="default_sunrise">--:--</string>
+    <string name="sunset_label">Sunset</string>
+    <string name="default_sunset">--:--</string>
+    <string name="hourly_forecast_title">3-Hour Forecast</string>
+    <string name="forecast_unavailable">Forecast data is not available at this time.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>
