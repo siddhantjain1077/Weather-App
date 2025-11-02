@@ -61,20 +61,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // ✅ CRITICAL: Apply theme BEFORE setContentView()
+        applyTheme();
+
         super.onCreate(savedInstanceState);
-
-        // Apply the saved theme before setting the content view
-        SharedPreferences sharedPreferences = getSharedPreferences("theme_prefs", MODE_PRIVATE);
-        int savedTheme = sharedPreferences.getInt("theme_key", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-        AppCompatDelegate.setDefaultNightMode(savedTheme);
-
         setContentView(R.layout.activity_main);
 
         initializeUI();
         setupRetrofit();
         setupListeners();
         setupDrawer();
-        resetWeatherUI(null); // Set initial placeholder text
+        resetWeatherUI(null);
+    }
+
+    /**
+     * Apply the saved theme preference
+     * This must be called before setContentView()
+     */
+    private void applyTheme() {
+        SharedPreferences sharedPreferences = getSharedPreferences("theme_prefs", MODE_PRIVATE);
+        int savedTheme = sharedPreferences.getInt("theme_key", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        AppCompatDelegate.setDefaultNightMode(savedTheme);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Check if theme was changed in settings and recreate if needed
+        SharedPreferences sharedPreferences = getSharedPreferences("theme_prefs", MODE_PRIVATE);
+        int currentTheme = AppCompatDelegate.getDefaultNightMode();
+        int savedTheme = sharedPreferences.getInt("theme_key", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+        if (currentTheme != savedTheme) {
+            recreate(); // Recreate activity to apply new theme
+        }
     }
 
     private void initializeUI() {
@@ -225,7 +245,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_logout) {
-            // Handle the logout action, for example, navigate to a login screen
+            // Handle the logout action
+            Toast.makeText(this, "Logout clicked", Toast.LENGTH_SHORT).show();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

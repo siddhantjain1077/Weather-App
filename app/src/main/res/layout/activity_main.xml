@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/purple_500"
+            android:background="?attr/colorPrimary"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
@@ -61,7 +61,8 @@
                         android:inputType="textCapWords"
                         android:background="@android:color/transparent"
                         android:textSize="18sp"
-                        android:textColor="@color/black"
+                        android:textColorHint="#9E9E9E"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:imeOptions="actionSearch"
                         android:autofillHints="postalAddress" />
 
@@ -73,7 +74,7 @@
                         android:src="@android:drawable/ic_search_category_default"
                         android:background="@drawable/search_button_background"
                         android:contentDescription="@string/search_weather_desc"
-                        app:tint="@color/white"
+                        app:tint="?attr/colorPrimary"
                         android:scaleType="fitCenter" />
                 </LinearLayout>
 
@@ -118,18 +119,18 @@
 
                         <!-- Weather Icon and Temperature Container -->
                         <LinearLayout
-                            android:layout_width="175dp"
-                            android:layout_height="86dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginBottom="24dp"
-                            android:gravity="center_vertical"
+                            android:gravity="center"
                             android:orientation="horizontal">
 
                             <!-- Weather Icon Placeholder -->
                             <ImageView
                                 android:id="@+id/ivWeatherIcon"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_marginEnd="16dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginEnd="8dp"
                                 android:contentDescription="@string/weather_icon_desc"
                                 android:src="@android:drawable/ic_menu_day"
                                 app:tint="@color/white" />
@@ -141,7 +142,11 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/default_temp"
                                 android:textColor="@color/white"
-                                android:textSize="80sp" />
+                                android:textSize="64sp"
+                                android:maxLines="1"
+                                android:autoSizeTextType="uniform"
+                                android:autoSizeMinTextSize="32sp"
+                                android:autoSizeMaxTextSize="64sp" />
 
                         </LinearLayout>
 
@@ -165,7 +170,7 @@
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="?attr/colorSurface"
                     android:layout_marginBottom="20dp">
 
                     <LinearLayout
@@ -180,7 +185,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/weather_details_title"
                             android:textSize="18sp"
-                            android:textColor="@color/black"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textStyle="bold"
                             android:layout_marginBottom="15dp" />
 
@@ -229,7 +234,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:weightSum="2"
-                             android:layout_marginBottom="10dp">
+                            android:layout_marginBottom="10dp">
                             <TextView style="@style/WeatherDetailLabel" android:text="@string/pressure_label" />
                             <TextView style="@style/WeatherDetailValue" android:id="@+id/tvPressure" android:text="@string/default_pressure" />
                         </LinearLayout>
@@ -290,7 +295,7 @@
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="?attr/colorSurface"
                     android:layout_marginBottom="20dp">
 
                     <LinearLayout
@@ -304,13 +309,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/hourly_forecast_title"
                             android:textSize="18sp"
-                            android:textColor="@color/black"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textStyle="bold"
                             android:layout_marginBottom="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="?android:attr/textColorSecondary"
                             android:text="@string/forecast_unavailable"/>
 
                     </LinearLayout>
@@ -321,12 +327,16 @@
 
     </LinearLayout>
 
+    <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="?attr/colorSurface"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_drawer_menu" />
+        app:menu="@menu/nav_drawer_menu"
+        app:itemIconTint="?attr/colorOnSurface"
+        app:itemTextColor="?attr/colorOnSurface" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

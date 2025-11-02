@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WeatherApp">
 
+        <!-- MainActivity as launcher -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -24,9 +25,20 @@
             </intent-filter>
         </activity>
 
+        <!-- Settings Activity -->
         <activity
             android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity" />
+
+        <!-- Login Activity (if you want to use it later) -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <!-- Register Activity (if you want to use it later) -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
 
     </application>
 
